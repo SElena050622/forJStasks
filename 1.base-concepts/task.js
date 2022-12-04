@@ -18,7 +18,9 @@ function solveEquation(a, b, c) {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  console.log(Number.isNaN(NaN));       // true
+  // console.log(Number.isNaN(NaN));       // true
+  // console.log(NaN === NaN);
+  console.log(typeof NaN);
 
   let P = (percent / 100 / 12);  // 1/12 процентной ставки от 0 до 1
   let S = (amount - contribution);  // тело кредита, из общего кредита вычитаем исходную сумму
@@ -27,7 +29,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   return amountAll;
   amountAll = Math.ceil(2);  //  округление до 2 значений  после запятой
   // console.log(amountAll);
-  return amountAll;
+  return { amountAll: amountAll };
 }
 
 
