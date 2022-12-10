@@ -17,13 +17,20 @@ function solveEquation(a, b, c) {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  // console.log(Number.isNaN(NaN));       // true
-  // console.log(NaN === NaN);
-  // console.log(typeof NaN);
-  // console.log(isNaN(percent));
-  // console.log(calculateTotalMortgage.isNaN(percent, contribution, amount, countMonths));
   
-
+    if (isNaN(percent)) {
+      return false;
+    }
+    if (isNaN(contribution)) {
+      return false;
+    }
+    if (isNaN(amount)) {
+      return false;
+    }
+    if (isNaN(countMonths)) {
+      return false;
+    }
+  
   let P = (percent / 100 / 12);  // 1/12 процентной ставки от 0 до 1
   let S = (amount - contribution);  // тело кредита, из общего кредита вычитаем исходную сумму
   let amountMonths = (S * (P + (P / ( Math.pow((1 + P), countMonths) - 1)))); // Ежемесячная оплата
