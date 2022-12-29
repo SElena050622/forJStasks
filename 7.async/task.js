@@ -1,13 +1,10 @@
 "use strict";
 class AlarmClock {
-    constructor(alarmCollection = [], intervalId = null) { // выделяет память для объекта
-        this.alarmCollection = alarmCollection; // хранение коллекции звонков
-        this.intervalId = intervalId; // хранение id таймера без начального значения
+    constructor() { // выделяет память для объекта
+        this.alarmCollection = []; // хранение коллекции звонков
+        this.intervalId = null; // хранение id таймера без начального значения
     }
     addClock(time = null, callback = null) { // добавляет новый звонок в коллекцию существующих
-        this.time = time;
-        this.callback = callback;
-       
         if (!time || !callback) {    
             throw new Error ('Отсутствуют обязательные аргументы')
         }
@@ -16,7 +13,7 @@ class AlarmClock {
         console.warn ('Уже присутствует звонок на это же время')
         }
         
-        this.alarmCollection.push({time: time, callback: callback, canCall: true});        
+        this.alarmCollection.push({time, callback, canCall: true});        
     }
     
     removeClock(time) { // удаляет звонки по определённому времени        
@@ -24,9 +21,6 @@ class AlarmClock {
     }
 
     getCurrentFormattedTime() {  // возвращает текущее время в строковом формате HH:MM
-        /*let fmt = t => ("" + t).padStart(2, '0');
-        let currFormattedTime = fmt(new Date().getHours()) + ":" + fmt(new Date().getMinutes());
-        return currFormattedTime;*/
         return new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
     }
 
@@ -54,7 +48,7 @@ class AlarmClock {
     }
 
     clearAlarms() { // удаляет все звонки
-        this.stop;
+        stop();
         this.alarmCollection = [];
     }
 
